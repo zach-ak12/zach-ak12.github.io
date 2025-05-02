@@ -1,238 +1,254 @@
-<!DOCTYPE HTML/>
+<!DOCTYPE html/>
 <html>
-<body>
+  <body>
+    <h1>Zach's Website</h1>
+    <h4>Website made by Zachary Aboukhamis</h4>
+    <h1 style="background-color: DodgerBlue">First Website!</h1>
 
 
+    <div class="container">
+      <a href="https://ibb.co/F4MBDHkk"
+        ><img
+          src="https://i.ibb.co/QvR6KD77/IMG-0008.jpg"
+          alt="IMG-0008"
+          border="0"
+      /></a>
+    </div>
+    <!doctype html>
 
-
-
-
-<h1>Zach's Website</h1>
-<h4>Website made by Zachary Aboukhamis</h4>
-<h1 style="background-color:DodgerBlue;">First Website!</h1>
-
-<div class = "container">
-
-
-<img src="IMG-0008.jpg" alt="IMG-0008" border="0">
-</div>
-<!DOCTYPE html>
-
-
-<pre>
+    <pre>
 Hello! This is my first website and I'm excited to share some stuff about me!
 My hobbies are playing soccer, playing piano, and of course, coding! 
 I aslo enjoy going on vacations and running. 
 I hope you enjoy my Tic-Tac-Toe game!
-</pre>
+</pre
+    >
+    <h1>Surprise Button</h1>
 
- 
+<!-- Surprise Button -->
+<button id="surpriseBtn" style="
 
- 
+">Surprise!</button>
 
+<!-- Hidden Surprise Message -->
+<div id="surpriseMsg" style="
+  display: none;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  color: #00ff00;
+  padding: 20px;
+  font-size: 22px;
+  border: 3px dashed #00ff00;
+  border-radius: 12px;
+  z-index: 9998;
+  max-width: 80%;
+  text-align: center;
+">
+  You have just triggered a <strong>confetti party!</strong>
+</div>
 
+<script>
+  document.getElementById("surpriseBtn").addEventListener("click", function () {
+    const msg = document.getElementById("surpriseMsg");
+    msg.style.display = "block";
+  });
+</script>
 
+    <!doctype html>
+    <html lang="en">
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Python Tic Tac Toe Game</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          text-align: center;
+          margin-top: 50px;
+        }
+        #game {
+          display: none;
+          margin-top: 20px;
+        }
+        .row {
+          display: flex;
+          justify-content: center;
+        }
+        .cell {
+          width: 80px;
+          height: 80px;
+          border: 2px solid #000;
+          font-size: 2em;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+        }
+        #status {
+          margin-top: 20px;
+          font-size: 1.2em;
+        }
+      </style>
 
+      <body>
+        <h1>Tic-Tac-Toe</h1>
+        <button onclick="startGame()">Start Game</button>
 
+        <!-- start of tictactoe game code -->
+        <div id="game">
+          <div class="row">
+            <div class="cell" onclick="makeMove(0)"></div>
+            <div class="cell" onclick="makeMove(1)"></div>
+            <div class="cell" onclick="makeMove(2)"></div>
+          </div>
+          <div class="row">
+            <div class="cell" onclick="makeMove(3)"></div>
+            <div class="cell" onclick="makeMove(4)"></div>
+            <div class="cell" onclick="makeMove(5)"></div>
+          </div>
+          <div class="row">
+            <div class="cell" onclick="makeMove(6)"></div>
+            <div class="cell" onclick="makeMove(7)"></div>
+            <div class="cell" onclick="makeMove(8)"></div>
+          </div>
+          <div id="status"></div>
+        </div>
 
+        <script>
+          let board = ["", "", "", "", "", "", "", "", ""]
+          let currentPlayer = "X"
+          let gameActive = false
 
-  <!DOCTYPE html>
-<html lang="en">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Python Tic Tac Toe Game</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 50px;
-    }
-    #game {
-      display: none;
-      margin-top: 20px;
-    }
-    .row {
-      display: flex;
-      justify-content: center;
-    }
-    .cell {
-      width: 80px;
-      height: 80px;
-      border: 2px solid #000;
-      font-size: 2em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-    #status {
-      margin-top: 20px;
-      font-size: 1.2em;
-    }
-  </style>
+          function startGame() {
+            board = ["", "", "", "", "", "", "", "", ""]
+            currentPlayer = "X"
+            gameActive = true
+            document.getElementById("game").style.display = "block"
+            document.getElementById("status").innerText = "Player X's turn"
+            document.querySelectorAll(".cell").forEach((cell) => {
+              cell.innerText = ""
+              cell.style.pointerEvents = "auto"
+            })
+          }
 
-<body>
-  <h1>Tic-Tac-Toe</h1>
-  <button onclick="startGame()">Start Game</button>
+          function makeMove(index) {
+            if (!gameActive || board[index] !== "") return
 
+            board[index] = currentPlayer
+            document.querySelectorAll(".cell")[index].innerText = currentPlayer
+            document.querySelectorAll(".cell")[index].style.pointerEvents =
+              "none"
 
+            if (checkWinner()) {
+              document.getElementById("status").innerText =
+                `Player ${currentPlayer} wins!`
+              gameActive = false
+              return
+            }
 
+            if (!board.includes("")) {
+              document.getElementById("status").innerText = "It's a draw!"
+              gameActive = false
+              return
+            }
 
+            currentPlayer = currentPlayer === "X" ? "O" : "X"
+            document.getElementById("status").innerText =
+              `Player ${currentPlayer}'s turn`
+          }
 
+          function checkWinner() {
+            const winPatterns = [
+              [0, 1, 2],
+              [3, 4, 5],
+              [6, 7, 8],
+              [0, 3, 6],
+              [1, 4, 7],
+              [2, 5, 8],
+              [0, 4, 8],
+              [2, 4, 6],
+            ]
 
+            return winPatterns.some((pattern) => {
+              const [a, b, c] = pattern
+              return board[a] && board[a] === board[b] && board[a] === board[c]
+            })
+          }
+        </script>
+        <!-- end of tictactoe game code -->
+      </body>
+      <h1>Javascript</h1>
+      <!doctype html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <title>Start Game</title>
+          <style>
+            #gameContainer {
+              position: relative;
+              padding-bottom: 56.25%;
+              padding-top: 30px;
+              height: 0;
+              display: none; /* Hide the game initially */
+            }
+            #gameContainer iframe {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            }
+            button {
+              padding: 10px 20px;
+              font-size: 18px;
+              cursor: pointer;
+            }
 
+            .button-section {
+              text-align: center;
+              margin-top: 20px;
+            }
 
+            button {
+              padding: 10px 20px;
+              margin: 5px;
+              font-size: 1em;
+              border: none;
+              border-radius: 30px;
+              background-color: #12345678;
+              color: #1234567;
+              cursor: pointer;
+            }
+          </style>
+        </head>
+        <body>
+          <button id="startButton">Start Game</button>
 
+          <div id="gameContainer">
+            <iframe
+              src="https://arcade.makecode.com/S87182-47269-00805-61733"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
 
+          <script>
+            const startButton = document.getElementById("startButton")
+            const gameContainer = document.getElementById("gameContainer")
 
-<!-- start of tictactoe game code -->
-  <div id="game">
-    <div class="row">
-      <div class="cell" onclick="makeMove(0)"></div>
-      <div class="cell" onclick="makeMove(1)"></div>
-      <div class="cell" onclick="makeMove(2)"></div>
-    </div>
-    <div class="row">
-      <div class="cell" onclick="makeMove(3)"></div>
-      <div class="cell" onclick="makeMove(4)"></div>
-      <div class="cell" onclick="makeMove(5)"></div>
-    </div>
-    <div class="row">
-      <div class="cell" onclick="makeMove(6)"></div>
-      <div class="cell" onclick="makeMove(7)"></div>
-      <div class="cell" onclick="makeMove(8)"></div>
-    </div>
-    <div id="status"></div>
-  </div>
-
-  <script>
-    let board = ["", "", "", "", "", "", "", "", ""];
-    let currentPlayer = "X";
-    let gameActive = false;
-
-    function startGame() {
-      board = ["", "", "", "", "", "", "", "", ""];
-      currentPlayer = "X";
-      gameActive = true;
-      document.getElementById("game").style.display = "block";
-      document.getElementById("status").innerText = "Player X's turn";
-      document.querySelectorAll(".cell").forEach(cell => {
-        cell.innerText = "";
-        cell.style.pointerEvents = "auto";
-      });
-    }
-
-    function makeMove(index) {
-      if (!gameActive || board[index] !== "") return;
-
-      board[index] = currentPlayer;
-      document.querySelectorAll(".cell")[index].innerText = currentPlayer;
-      document.querySelectorAll(".cell")[index].style.pointerEvents = "none";
-
-      if (checkWinner()) {
-        document.getElementById("status").innerText = `Player ${currentPlayer} wins!`;
-        gameActive = false;
-        return;
-      }
-
-      if (!board.includes("")) {
-        document.getElementById("status").innerText = "It's a draw!";
-        gameActive = false;
-        return;
-      }
-
-      currentPlayer = currentPlayer === "X" ? "O" : "X";
-      document.getElementById("status").innerText = `Player ${currentPlayer}'s turn`;
-    }
-
-    function checkWinner() {
-      const winPatterns = [
-        [0,1,2], [3,4,5], [6,7,8],
-        [0,3,6], [1,4,7], [2,5,8],
-        [0,4,8], [2,4,6]
-      ];
-
-      return winPatterns.some(pattern => {
-        const [a, b, c] = pattern;
-        return board[a] && board[a] === board[b] && board[a] === board[c];
-      });
-    }
-  </script>
-<!-- end of tictactoe game code -->
-
-
-
-
-
-
-
-
-
-
-</body>
-<h1>Javascript</h1>
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Start Game</title>
-  <style>
-    #gameContainer {
-      position: relative;
-      padding-bottom: 56.25%;
-      padding-top: 30px;
-      height: 0;
-      display: none; /* Hide the game initially */
-    }
-    #gameContainer iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 18px;
-      cursor: pointer;
-    }
-    
-
-    .button-section {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    button {
-      padding: 10px 20px;
-      margin: 5px;
-      font-size: 1em;
-      border: none;
-      border-radius: 30px;
-      background-color: #12345678;
-      color: #1234567;
-      cursor: pointer;
-    }
-
-  </style>
-</head>
-<body>
-
-  <button id="startButton">Start Game</button>
-
-  <div id="gameContainer">
-    <iframe src="https://arcade.makecode.com/S87182-47269-00805-61733" frameborder="0" allowfullscreen></iframe>
-  </div>
-
-  <script>
-    const startButton = document.getElementById('startButton');
-    const gameContainer = document.getElementById('gameContainer');
-
-    startButton.addEventListener('click', function() {
-      gameContainer.style.display = 'block'; // Show the game
-      startButton.style.display = 'none';    // Hide the button
-    });
-  </script>
-
-</body>
+            startButton.addEventListener("click", function () {
+              gameContainer.style.display = "block" // Show the game
+              startButton.style.display = "none" // Hide the button
+              
+              
+              
+              
+            })
+          </script>
+        </body>
+      </html>
+    </html>
+  </body>
 </html>
