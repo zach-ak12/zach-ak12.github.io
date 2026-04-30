@@ -1,73 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zach's Website</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+  <div class="geometric-bg">
+    <div style="width: 500px; height: 500px; top: -150px; left: -100px;"></div>
+    <div style="width: 700px; height: 700px; bottom: -200px; right: -100px;"></div>
+  </div>
 
-<body>
-    <div class="header">
-        <h1>Zach's Website</h1>
-        <h4>Website made by Zachary Aboukhamis</h4>
-        <h2>First Website!</h2>
+  <header>
+    <div class="logo">ZACH STUDIO</div>
+    <div style="display: flex; align-items: center; gap: 20px;">
+      <div class="nav-links">
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#projects">WORK</a>
+        <a href="#arcade">GAMES</a>
+        <a href="#contact">CONTACT</a>
+      </div>
+      <button class="secret-trigger" id="secretBtn">SECRET MODE</button>
+      <button class="secret-trigger" id="themeToggle" style="background: rgba(212,175,55,0.2);">LIGHT/DARK</button>
     </div>
+  </header>
 
-    <div class="profile-section">
-        <div class="profile-pic-container">
-            <a href="https://ibb.co/8LxDPvxn"><img src="https://i.ibb.co/YFd7fnd4/IMG-0360.jpg" alt="IMG-0360"
-                    border="0"></a>
-        </div>
-        <pre class="bio">
-Hello! This is my first website and I'm excited to share some stuff about me!
-My hobbies are playing soccer, playing piano, and of course, coding! 
-I also enjoy going on vacations and running. 
-I hope you enjoy my games!
-        </pre>
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">THE CODEX OF A VISIONARY</div>
+      <h1>Zachary<br>Creator & Engineer</h1>
+      <div class="hero-desc" id="dynamicText">Inventor | Soccer Player | Creative Coder | Pianist</div>
+      <button class="btn-primary" onclick="scrollToSection('arcade')">ENTER THE ARCADE</button>
     </div>
+  </section>
 
-    <div class="surprise-section">
-        <h2>Surprise Button</h2>
-        <button id="surpriseBtn">Surprise!</button>
-        <div id="surpriseMsg">
-            <strong>Surprise!</strong> <em>You found the hidden message!</em>
-        </div>
-    </div>
+  <section id="about"><div class="about-card"><div style="font-size: 2.5rem;">⚡⚽🎹</div><h2 class="section-title">The Architect</h2><p>Congressional App Challenge 9th place finalist. I build at the intersection of art and logic. Soccer fuels my discipline, piano refines my rhythm, and code shapes my universe. This is more than a portfolio — it is a living digital studio.</p></div></section>
 
-    <div class="game-section">
-        <h2>Tic-Tac-Toe</h2>
-        <button id="startTicTacToe">Start Game</button>
-        <div id="ticTacToeGame">
-            <div class="row">
-                <div class="cell" data-index="0"></div>
-                <div class="cell" data-index="1"></div>
-                <div class="cell" data-index="2"></div>
-            </div>
-            <div class="row">
-                <div class="cell" data-index="3"></div>
-                <div class="cell" data-index="4"></div>
-                <div class="cell" data-index="5"></div>
-            </div>
-            <div class="row">
-                <div class="cell" data-index="6"></div>
-                <div class="cell" data-index="7"></div>
-                <div class="cell" data-index="8"></div>
-            </div>
-            <div id="status"></div>
-        </div>
-    </div>
+  <section id="projects"><h2 class="section-title">Signature Works</h2><div class="project-grid"><div class="project-card"><h3>Congress AI</h3><p>9th place national app challenge. Civic engagement platform connecting communities to legislation.</p><a class="gold-link" href="https://www.youtube.com/watch?v=iW1CfzagUD0" target="_blank">Watch Demo →</a></div><div class="project-card"><h3>Neural Canvas</h3><p>Generative music-to-visual engine. Real-time synesthetic experience.</p><a class="gold-link" href="#">Explore →</a></div><div class="project-card"><h3>Soccer Vision</h3><p>AI motion tracking for athlete performance analysis.</p><a class="gold-link" href="#">Case Study →</a></div></div></section>
 
-    <div class="game-section">
-        <h2>JavaScript Game</h2>
-        <button id="startJsGame">Start Game</button>
-        <div id="jsGameContainer">
-            <iframe src="https://arcade.makecode.com/S87182-47269-00805-61733" frameborder="0" allowfullscreen></iframe>
-        </div>
-    </div>
+  <section id="arcade"><h2 class="section-title">The Twin Games</h2><div class="games-container">
+    <div class="game-card"><h3 style="margin-bottom: 10px;">Quantum Orbit</h3><p style="margin-bottom: 12px;">Move mouse left and right. Collect golden orbs, avoid red threats.</p><canvas id="gameCanvas1" width="900" height="450" style="max-width:900px; width:100%; aspect-ratio:900/450"></canvas><div class="game-stats"><span><i class="fas fa-circle" style="color: gold;"></i> Score: <strong id="scoreDisplay1">0</strong></span><button class="restart-btn" id="restartGame1">Restart</button></div></div>
+    <div class="game-card"><h3 style="margin-bottom: 10px;">Memory Echo</h3><p>Match the hidden symbols. A classic test of focus.</p><canvas id="gameCanvas2" width="650" height="450" style="max-width:650px; width:100%; aspect-ratio:650/450"></canvas><div class="game-stats"><span><i class="fas fa-chart-line"></i> Matches: <span id="matchCount">0</span> / 6</span><button class="restart-btn" id="restartGame2">New Game</button></div><div id="memoryMsg" style="margin-top: 10px; font-size: 0.85rem;"></div></div>
+  </div></section>
 
-    <script src="script.js"></script>
-</body>
+  <section id="contact"><div class="contact-lux"><h2 class="section-title">Connect Directly</h2><div class="contact-row"><div class="contact-item"><i class="fas fa-envelope"></i> zach@infinite.dev</div><div class="contact-item"><i class="fas fa-phone-alt"></i> +1 (800) 239-887X</div><a href="https://github.com/ZachCreative" target="_blank" style="text-decoration: none;"><div class="contact-item"><i class="fab fa-github"></i> /ZachCreative</div></a></div><p style="margin-top: 30px;">Open for collaborations and ventures beyond the ordinary.</p></div></section>
+  <footer>© 2026 Zach — Built with precision and vision. All systems active.</footer>
 
-</html>
+  <!-- AUDIO SYSTEM: ambient music + secret mode sound toggle -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="secretSound" preload="auto">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+  </audio>
